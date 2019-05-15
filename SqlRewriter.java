@@ -24,6 +24,8 @@ public class SqlRewriter {
 
 
     public static void runQuery(String query, Connection connection) {
+        System.out.println();
+        System.out.println("QUERY>>> " + query);
         try {
             Statement statement = connection.createStatement();
             ResultSet results = statement.executeQuery(query);
@@ -54,12 +56,12 @@ public class SqlRewriter {
 
             ArrayList<String> queries = new ArrayList<>();
             queries.add("SELECT * FROM sqlrewriter_orig.medinfo");
-            //queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo");
-            //queries.add("SELECT age FROM sqlrewriter_orig.medinfo");
-            //queries.add("SELECT illness FROM sqlrewriter_orig.medinfo");
-            //queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo");
-            //queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo WHERE lastname='Ivic'");
-            //queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo WHERE illness='Flu'");
+            queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo");
+            queries.add("SELECT age FROM sqlrewriter_orig.medinfo");
+            queries.add("SELECT illness FROM sqlrewriter_orig.medinfo");
+            queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo");
+            queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo WHERE lastname='Ivic'");
+            queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo WHERE illness='Flu'");
 
             for (String query : queries) {
                 runQuery(query, connection);

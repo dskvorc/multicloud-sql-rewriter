@@ -16,9 +16,11 @@ public class MulticloudRewriteProgram implements Program {
 
 	public static MulticloudRewriteProgram INSTANCE = new MulticloudRewriteProgram();
 
+
 	private MulticloudRewriteProgram() {
 		super();
 	}
+
 
 	@Override
 	public RelNode run(RelOptPlanner planner,
@@ -28,7 +30,7 @@ public class MulticloudRewriteProgram implements Program {
 					   List<RelOptLattice> lattices) {
 
 		RuleSet multiCloudRewriteRules = RuleSets.ofList(
-				MulticloudRewriteGeneralRule.INSTANCE,
+				//MulticloudRewriteGeneralRule.INSTANCE
 				MulticloudRewriteScanRule.INSTANCE
 		);
 		Program hep = Programs.hep(multiCloudRewriteRules, false, null);
