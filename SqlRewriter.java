@@ -28,18 +28,25 @@ public class SqlRewriter {
         System.out.println("QUERY>>> " + query);
         try {
             Statement statement = connection.createStatement();
-            ResultSet results = statement.executeQuery(query);
-            ResultSetMetaData meta = results.getMetaData();
-            int noOfColumns = meta.getColumnCount();
-            while (results.next()) {
-                for (int i = 1; i <= noOfColumns; i++) {
-                    String columnName = meta.getColumnName(i);
-                    Object columnValue = results.getObject(columnName);
-                    System.out.print(columnName + " = " + String.format("%-15s", String.valueOf(columnValue)) + "|");
+            boolean isResultSetAvailable = statement.execute(query);
+            if (isResultSetAvailable) {
+                ResultSet results = statement.getResultSet();
+                ResultSetMetaData meta = results.getMetaData();
+                int noOfColumns = meta.getColumnCount();
+                while (results.next()) {
+                    for (int i = 1; i <= noOfColumns; i++) {
+                        String columnName = meta.getColumnName(i);
+                        Object columnValue = results.getObject(columnName);
+                        System.out.print(columnName + " = " + String.format("%-15s", String.valueOf(columnValue)) + "|");
+                    }
+                    System.out.println();
                 }
+                results.close();
+            }
+            else {
+                System.out.print(statement.getUpdateCount() + " row(s) updated");
                 System.out.println();
             }
-            results.close();
             statement.close();
         }
         catch (Exception e) {
@@ -56,12 +63,14 @@ public class SqlRewriter {
 
             ArrayList<String> queries = new ArrayList<>();
             queries.add("SELECT * FROM sqlrewriter_orig.medinfo");
-            queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo");
-            queries.add("SELECT age FROM sqlrewriter_orig.medinfo");
-            queries.add("SELECT illness FROM sqlrewriter_orig.medinfo");
-            queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo");
-            queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo WHERE lastname='Ivic'");
-            queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo WHERE illness='Flu'");
+            //queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo");
+            //queries.add("SELECT age FROM sqlrewriter_orig.medinfo");
+            //queries.add("SELECT illness FROM sqlrewriter_orig.medinfo");
+            //queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo");
+            //queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo WHERE lastname='Ivic'");
+            //queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo WHERE illness='Flu'");
+
+            //queries.add("INSERT INTO sqlrewriter_orig.medinfo VALUES (7, 'Perica', 'Bukic', 49, 'Zglobovi')");
 
             for (String query : queries) {
                 runQuery(query, connection);

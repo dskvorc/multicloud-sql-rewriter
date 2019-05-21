@@ -1,0 +1,51 @@
+{
+    "version": "1.0",
+    "defaultSchema": "cloudsec-sqlrewriter",
+    "schemas": [
+        {
+            "name": "sqlrewriter_orig",
+            "type": "custom",
+            "factory" : "MulticloudOriginSchemaFactory",
+            "operand" : {
+                "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+                "jdbcUrl": "jdbc:mysql://localhost:3306/sqlrewriter_orig?serverTimezone=UTC",
+                "jdbcUser": "root",
+                "jdbcPassword": "mysql",
+                "multicloudJoinKey": "multiid"
+            }
+        },
+        {
+            "name": "sqlrewriter_frag1",
+            "type": "custom",
+            "factory" : "MulticloudFragmentSchemaFactory",
+            "operand" : {
+                "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+                "jdbcUrl": "jdbc:mysql://localhost:3306/sqlrewriter_frag1?serverTimezone=UTC",
+                "jdbcUser": "root",
+                "jdbcPassword": "mysql"
+            }
+        },
+        {
+            "name": "sqlrewriter_frag2",
+            "type": "custom",
+            "factory" : "MulticloudFragmentSchemaFactory",
+            "operand" : {
+                "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+                "jdbcUrl": "jdbc:mysql://localhost:3306/sqlrewriter_frag2?serverTimezone=UTC",
+                "jdbcUser": "root",
+                "jdbcPassword": "mysql"
+            }
+        },
+        {
+            "name": "sqlrewriter_frag3",
+            "type": "custom",
+            "factory" : "MulticloudFragmentSchemaFactory",
+            "operand" : {
+                "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+                "jdbcUrl": "jdbc:mysql://localhost:3306/sqlrewriter_frag3?serverTimezone=UTC",
+                "jdbcUser": "root",
+                "jdbcPassword": "mysql"
+            }
+        }
+    ]
+}

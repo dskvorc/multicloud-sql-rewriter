@@ -8,14 +8,24 @@ import javax.sql.DataSource;
 
 public class MulticloudOriginSchema extends JdbcSchema {
 
+	String multicloudJoinKey;
+
 	public MulticloudOriginSchema(SchemaPlus parentSchema,
 								  String name,
 								  DataSource dataSource,
 								  SqlDialect dialect,
 								  JdbcConvention convention,
 								  String catalog,
-								  String schema) {
+								  String schema,
+								  String multicloudJoinKey) {
 		super(dataSource, dialect, convention, catalog, schema);
+		this.multicloudJoinKey = multicloudJoinKey;
+
 		Hook.PROGRAM.add(MulticloudRewriteProgram.prepend(MulticloudRewriteProgram.INSTANCE));
+	}
+
+
+	public String getMulticloudJoinKey() {
+		return multicloudJoinKey;
 	}
 }

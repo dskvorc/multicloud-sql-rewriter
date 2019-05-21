@@ -22,7 +22,8 @@ public class MulticloudOriginSchemaFactory implements SchemaFactory {
 				schemaParams.getDialect(),
 				schemaParams.getConvention(),
 				schemaParams.getCatalog(),
-				schemaParams.getSchema()
+				schemaParams.getSchema(),
+				schemaParams.getMulticloudJoinKey()
 		);
 	}
 }

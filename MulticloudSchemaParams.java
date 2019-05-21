@@ -21,6 +21,8 @@ public class MulticloudSchemaParams {
 	String catalog;
 	String schema;
 
+	String multicloudJoinKey;
+
 
 	private MulticloudSchemaParams(SchemaPlus parentSchema, String name, Map<String, Object> operand) {
 		try {
@@ -68,6 +70,8 @@ public class MulticloudSchemaParams {
 
 		this.parentSchema = parentSchema;
 		this.name = name;
+
+		multicloudJoinKey = (String) operand.get("multicloudJoinKey");
 	}
 
 
@@ -108,5 +112,10 @@ public class MulticloudSchemaParams {
 
 	public String getSchema() {
 		return schema;
+	}
+
+
+	public String getMulticloudJoinKey() {
+		return multicloudJoinKey;
 	}
 }

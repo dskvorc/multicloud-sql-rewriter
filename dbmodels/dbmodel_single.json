@@ -1,0 +1,14 @@
+{
+    "version": "1.0",
+    "defaultSchema": "cloudsec-sqlrewriter",
+    "schemas": [
+        {
+            "name": "sqlrewriter_orig",
+            "type": "jdbc",
+            "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+            "jdbcUrl": "jdbc:mysql://localhost:3306/sqlrewriter_orig?serverTimezone=UTC",
+            "jdbcUser": "root",
+            "jdbcPassword": "mysql"
+        }
+    ]
+}

@@ -1,12 +1,12 @@
-DROP TABLE IF EXISTS medinfo2;
+DROP TABLE IF EXISTS medinfo;
 
-CREATE TABLE medinfo2 (
+CREATE TABLE medinfo (
     multiid integer PRIMARY KEY NOT NULL,
-    age     integer NOT NULL
+    city    text NOT NULL
 );
 
-INSERT INTO medinfo2 VALUES (1001, 35);
-INSERT INTO medinfo2 VALUES (1002, 48);
-INSERT INTO medinfo2 VALUES (1003, 70);
-INSERT INTO medinfo2 VALUES (1004, 56);
-INSERT INTO medinfo2 VALUES (1005, 21);
+INSERT INTO medinfo VALUES (1001, 'Zagreb-2');
+INSERT INTO medinfo VALUES (1002, 'Split-2');
+INSERT INTO medinfo VALUES (1003, 'Rijeka-2');
+INSERT INTO medinfo VALUES (1004, 'Osijek-2');
+INSERT INTO medinfo VALUES (1005, 'Pula-2');
