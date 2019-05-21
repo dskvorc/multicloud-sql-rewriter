@@ -70,8 +70,6 @@ public class SqlRewriter {
             //queries.add("SELECT firstname, lastname, age, illness FROM sqlrewriter_orig.medinfo WHERE lastname='Ivic'");
             //queries.add("SELECT firstname, lastname FROM sqlrewriter_orig.medinfo WHERE illness='Flu'");
 
-            //queries.add("INSERT INTO sqlrewriter_orig.medinfo VALUES (7, 'Perica', 'Bukic', 49, 'Zglobovi')");
-
             for (String query : queries) {
                 runQuery(query, connection);
             }
